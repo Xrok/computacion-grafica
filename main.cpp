@@ -5,6 +5,6 @@
 int main()
 {
     Mundo mundo;
-    mundo.escenario1();
+    mundo.escenario3();
     return 0;
 }
