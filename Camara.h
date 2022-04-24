@@ -19,7 +19,7 @@ class Camara
 public:
     Camara()
     {
-        prof_max = 4;
+        prof_max = 5;
     }
     float fov, f, a, b;
     float w, h;

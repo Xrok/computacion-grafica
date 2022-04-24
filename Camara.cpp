@@ -18,7 +18,7 @@ void Camara::init(float angulo, float _near, int ancho, int alto,
     f = _near;
     w = ancho;
     h = alto;
-
+    prof_max = 4;
     a = 2 * f * tan(fov * 3.14159 / 360);
     b = a * w / h;
 }
@@ -70,11 +70,11 @@ bool Camara::calcular_color(Rayo rayo, Luz &luz, vector<Objeto *> &vec_objetos, 
 {
     if (prof >= prof_max)
     {
-        color = vec3(1, 1, 1);
+        color = vec3(0, 0, 0);
         return false;
     }
     float t_calculado, t = 1000000;
-    vec3 color_min(1, 1, 1);
+    vec3 color_min(0, 0, 0);
     vec3 normal, N;
     bool hay_interseccion = false;
     Objeto *pObj;
@@ -89,13 +89,14 @@ bool Camara::calcular_color(Rayo rayo, Luz &luz, vector<Objeto *> &vec_objetos, 
                 t = t_calculado;
                 N = normal;
                 pObj = pObjTmp;
+                color_min = pObj->color;
             }
         }
     }
     if (hay_interseccion)
     {
         vec3 luz_ambiente = luz.color * 0.3;
-        color_min = pObj->color;
+
         // pi punto de interseccion
         vec3 pi = (rayo.ori + rayo.dir * t);
         // L vector hacia la luz
@@ -130,10 +131,12 @@ bool Camara::calcular_color(Rayo rayo, Luz &luz, vector<Objeto *> &vec_objetos, 
                 }
             }
             color_min = color_min * (luz_ambiente + luz_difusa + luz_especular);
+            color_min.max_to_one();
         }
         else
         {
             color_min = color_min * luz_ambiente;
+            color_min.max_to_one();
         }
         // Rayos refractados
         vec3 color_refractado;
@@ -169,6 +172,7 @@ bool Camara::calcular_color(Rayo rayo, Luz &luz, vector<Objeto *> &vec_objetos, 
             // calcular intersecciones
             if (!interse)
             {
+//                color_reflejado = color_min*0.8;
                 color_reflejado = vec3(0);
                 // color_min = color_min + color_reflejado*0.8;
             }
