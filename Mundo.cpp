@@ -10,29 +10,30 @@ void Mundo::escenario3()
              vec3(0, 1, 0));
     cam.calcular_vectores();
 
-    luz.set(vec3(35, 35, 50), vec3(1, 1, 1));
+    luz.set(vec3(30, 20, 30), vec3(1, 1, 1));
+
     Cilindro *cil1 = new Cilindro;
     cil1->color = vec3(0.5, 0.5, 0.5);
-    cil1->pa = vec3(0, 20, 10);
+    cil1->pa = vec3(0, 40, 10);
     cil1->pb = vec3(0, 0, 10);
-    cil1->ra = 10;
+    cil1->ra = 20;
     cil1->ke = 0;
     cil1->ior = 1.5;
     vec_objetos.emplace_back(cil1);
 
     Cilindro *tapaTop = new Cilindro;
     tapaTop->color = vec3(0.7, 0.4, 0.2);
-    tapaTop->pa = vec3(0, 0, 10);
-    tapaTop->pb = vec3(0, -2, 10);
-    tapaTop->ra = 10;
+    tapaTop->pa = vec3(0, 45, 10);
+    tapaTop->pb = vec3(0, 40, 10);
+    tapaTop->ra = 20;
     tapaTop->ke = 0;
     vec_objetos.emplace_back(tapaTop);
 
     Cilindro *tapaBot = new Cilindro;
     tapaBot->color = vec3(0.7, 0.4, 0.2);
-    tapaBot->pa = vec3(0, 22, 10);
-    tapaBot->pb = vec3(0, 20, 10);
-    tapaBot->ra = 10;
+    tapaBot->pa = vec3(0, 0, 10);
+    tapaBot->pb = vec3(0, -5, 10);
+    tapaBot->ra = 20;
     tapaBot->ke = 0;
     vec_objetos.emplace_back(tapaBot);
 
@@ -46,8 +47,8 @@ void Mundo::escenario3()
     vec_objetos.emplace_back(plano);
 
     Esfera *luciernaga1 = new Esfera;
-    luciernaga1->cen = vec3(-1, 5, 10);
-    luciernaga1->rad = 1;
+    luciernaga1->cen = vec3(10, 30, 15);
+    luciernaga1->rad = 3;
     luciernaga1->color = vec3(0.9, 0.7, 0.1);
     luciernaga1->kd = 0.8;
     luciernaga1->ke = 0.9;
@@ -56,7 +57,7 @@ void Mundo::escenario3()
 
     Esfera *luciernaga2 = new Esfera;
     luciernaga2->cen = vec3(3, 12, 10);
-    luciernaga2->rad = 1;
+    luciernaga2->rad = 3;
     luciernaga2->color = vec3(0.9, 0.7, 0.1);
     luciernaga2->kd = 0.8;
     luciernaga2->ke = 0.9;
@@ -64,8 +65,8 @@ void Mundo::escenario3()
     vec_objetos.emplace_back(luciernaga2);
 
     Esfera *luciernaga3 = new Esfera;
-    luciernaga3->cen = vec3(2, 17, 10);
-    luciernaga3->rad = 1;
+    luciernaga3->cen = vec3(-10, 17, 10);
+    luciernaga3->rad = 3;
     luciernaga3->color = vec3(0.9, 0.7, 0.1);
     luciernaga3->kd = 0.8;
     luciernaga3->ke = 0.9;
