@@ -11,10 +11,34 @@ void Mundo::escenario3()
     cam.prof_max = 4;
     cam.calcular_vectores();
 
-    luz.set(vec3(0, 20, 10),  vec3(1,1,1));
+    luz.set(vec3(10, 30, 15),  vec3(1,1,1));
+
+    Esfera *luciernaga1 = new Esfera;
+    luciernaga1->cen = vec3(10, 30, 15);
+    luciernaga1->rad = 3;
+    luciernaga1->color = vec3(0.9, 0.7, 0.1);
+    luciernaga1->n = 4;
+    luciernaga1->fuente_luz = true;
+    vec_objetos.emplace_back(luciernaga1);
+
+    Esfera *luciernaga2 = new Esfera;
+    luciernaga2->cen = vec3(3, 12, 10);
+    luciernaga2->rad = 3;
+    luciernaga2->color = vec3(0.9, 0.7, 0.1);
+    luciernaga2->n = 4;
+    luciernaga2->fuente_luz = true;
+    vec_objetos.emplace_back(luciernaga2);
+
+    Esfera *luciernaga3 = new Esfera;
+    luciernaga3->cen = vec3(-10, 17, 10);
+    luciernaga3->rad = 3;
+    luciernaga3->color = vec3(0.9, 0.7, 0.1);
+    luciernaga3->n = 4;
+    luciernaga3->fuente_luz = true;
+    vec_objetos.emplace_back(luciernaga3);
 
     Cilindro *cil1 = new Cilindro;
-    cil1->color = vec3(0.68, 0.84, 0.9);
+    cil1->color = vec3(0.3, 0.8, 1);
     cil1->pa = vec3(0, 40, 10);
     cil1->pb = vec3(0, 0, 10);
     cil1->ra = 20;
@@ -29,7 +53,9 @@ void Mundo::escenario3()
     tapaTop->pa = vec3(0, 45, 10);
     tapaTop->pb = vec3(0, 40, 10);
     tapaTop->ra = 20;
-    tapaTop->ke = 0;
+    cil1->kd = 50;
+    cil1->ke = 50;
+    cil1->kr = 0;
     vec_objetos.emplace_back(tapaTop);
 
     Cilindro *tapaBot = new Cilindro;
@@ -37,35 +63,20 @@ void Mundo::escenario3()
     tapaBot->pa = vec3(0, 0, 10);
     tapaBot->pb = vec3(0, -5, 10);
     tapaBot->ra = 20;
-    tapaBot->ke = 0;
+    cil1->kd = 50;
+    cil1->ke = 50;
+    cil1->kr = 0;
     vec_objetos.emplace_back(tapaBot);
 
-    Esfera *luciernaga1 = new Esfera;
-    luciernaga1->cen = vec3(10, 30, 15);
-    luciernaga1->rad = 3;
-    luciernaga1->color = vec3(0.9, 0.7, 0.1);
-    luciernaga1->kd = 0.8;
-    luciernaga1->ke = 0.9;
-    luciernaga1->n = 4;
-    vec_objetos.emplace_back(luciernaga1);
-
-    Esfera *luciernaga2 = new Esfera;
-    luciernaga2->cen = vec3(3, 12, 10);
-    luciernaga2->rad = 3;
-    luciernaga2->color = vec3(0.9, 0.7, 0.1);
-    luciernaga2->kd = 0.8;
-    luciernaga2->ke = 0.9;
-    luciernaga2->n = 4;
-    vec_objetos.emplace_back(luciernaga2);
-
-    Esfera *luciernaga3 = new Esfera;
-    luciernaga3->cen = vec3(-10, 17, 10);
-    luciernaga3->rad = 3;
-    luciernaga3->color = vec3(0.9, 0.7, 0.1);
-    luciernaga3->kd = 0.8;
-    luciernaga3->ke = 0.9;
-    luciernaga3->n = 4;
-    vec_objetos.emplace_back(luciernaga3);
+    Cilindro *piso = new Cilindro;
+    piso->color = vec3(1, 0.5, 0.5);
+    piso->pa = vec3(0, -5, 10);
+    piso->pb = vec3(0, -100, 10);
+    piso->ra = 100;
+    piso->ke = 1;
+    piso->kd = 1;
+    piso->kr = 0.1;
+    vec_objetos.emplace_back(piso);
 
     Esfera *esfera1 = new Esfera;
     esfera1->cen = vec3(60, 0, 10);
@@ -77,16 +88,6 @@ void Mundo::escenario3()
     esfera1->ior = 0;
     esfera1->n = 4;
     vec_objetos.emplace_back(esfera1);
-
-    Cilindro *piso = new Cilindro;
-    piso->color = vec3(1, 0.5, 0.5);
-    piso->pa = vec3(0, -5, 10);
-    piso->pb = vec3(0, -100, 10);
-    piso->ra = 100;
-    piso->ke = 1;
-    piso->kd = 1;
-    piso->kr = 0.1;
-    vec_objetos.emplace_back(piso);
 
     cam.Renderizar(luz, vec_objetos);
 }

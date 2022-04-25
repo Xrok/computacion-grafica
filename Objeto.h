@@ -16,7 +16,9 @@ public:
         n = 1;
         kr = 0;
         ior = 0;
+        fuente_luz = false;
     }
+    bool fuente_luz;
     vec3 color;
     float kd, ke, n;
     float kr, ior;

@@ -78,12 +78,17 @@ bool Camara::calcular_color(Rayo rayo, Luz &luz, vector<Objeto *> &vec_objetos, 
     vec3 normal, N;
     bool hay_interseccion = false;
     Objeto *pObj;
+    bool choco_fuente = false;
 
     for (auto pObjTmp : vec_objetos)
     {
         if (pObjTmp->interseccion(rayo, t_calculado, normal))
         {
-            if (t_calculado < t)
+            if(pObjTmp->fuente_luz) {
+                color_min = pObjTmp->color;
+                choco_fuente = true;
+            }
+            else if (t_calculado < t && !choco_fuente)
             {
                 hay_interseccion = true;
                 t = t_calculado;
