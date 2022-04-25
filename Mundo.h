@@ -13,6 +13,7 @@ class Mundo
 {
 public:
     Camara cam;
+    vector<Luz> luces;
     Luz luz;
     vector<Objeto *> vec_objetos;
 

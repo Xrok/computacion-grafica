@@ -13,6 +13,10 @@ void Mundo::escenario3()
 
     luz.set(vec3(10, 30, 15),  vec3(1,1,1));
 
+    luces.emplace_back(Luz(vec3(10, 30, 15),  vec3(1,1,1)));
+    luces.emplace_back(Luz(vec3(3, 12, 10),  vec3(1,1,1)));
+    luces.emplace_back(Luz(vec3(-10, 17, 10),  vec3(1,1,1)));
+
     Esfera *luciernaga1 = new Esfera;
     luciernaga1->cen = vec3(10, 30, 15);
     luciernaga1->rad = 3;
@@ -89,7 +93,7 @@ void Mundo::escenario3()
     esfera1->n = 4;
     vec_objetos.emplace_back(esfera1);
 
-    cam.Renderizar(luz, vec_objetos);
+    cam.Renderizar(luces, vec_objetos);
 }
 
 void Mundo::escenario2()
@@ -127,7 +131,7 @@ void Mundo::escenario2()
     plano->ke = 0;
     vec_objetos.emplace_back(plano);
 
-    cam.Renderizar(luz, vec_objetos);
+    //cam.Renderizar(luz, vec_objetos);
 }
 
 void Mundo::escenario1()
@@ -196,5 +200,5 @@ void Mundo::escenario1()
     esf4->n = 16;
     vec_objetos.emplace_back(esf4);
 
-    cam.Renderizar(luz, vec_objetos);
+    //cam.Renderizar(luz, vec_objetos);
 }
