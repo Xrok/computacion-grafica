@@ -83,15 +83,37 @@ void Mundo::escenario3()
     vec_objetos.emplace_back(piso);
 
     Esfera *esfera1 = new Esfera;
-    esfera1->cen = vec3(60, 0, 10);
+    esfera1->cen = vec3(60, 0, 60);
     esfera1->rad = 20;
     esfera1->color = vec3(0.9, 0.7, 0.1);
     esfera1->kr = 0.1;
-    esfera1->ke = 1;
+    esfera1->ke = 0;
     esfera1->kd= 1;
     esfera1->ior = 0;
     esfera1->n = 4;
     vec_objetos.emplace_back(esfera1);
+
+    Esfera *chupeteBola = new Esfera;
+    chupeteBola->cen = vec3(-60, 45, 10);
+    chupeteBola->rad = 10;
+    chupeteBola->color = vec3(1, 0.2, 0.2);
+    chupeteBola->kr = 1;
+    chupeteBola->ke = 0;
+    chupeteBola->kd= 1;
+    chupeteBola->ior = 0;
+    chupeteBola->n = 4;
+    vec_objetos.emplace_back(chupeteBola);
+
+    Cilindro *chupetePalito = new Cilindro;
+    chupetePalito->color = vec3(1,1,1);
+    chupetePalito->pa = vec3(-60, 40, 10);
+    chupetePalito->pb = vec3(-60, -5, 10);
+    chupetePalito->ra = 2;
+    chupetePalito->kd = 50;
+    chupetePalito->ke = 50;
+    chupetePalito->kr = 0;
+    chupetePalito->ior = 1.1;
+    vec_objetos.emplace_back(chupetePalito);
 
     cam.Renderizar(luces, vec_objetos);
 }
